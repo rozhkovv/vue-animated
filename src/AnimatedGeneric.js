@@ -26,8 +26,8 @@ export default class AnimatedGeneric {
     // Set static animation class properties based on
     // given animation name or leave it blank to use
     // user provided animation name in props
-    this.enterClass = name && `${name} ${name}-enter-active`
-    this.leaveClass = name && `${name} ${name}-leave-active`
+    this.enterClass = name && `animate__${name} ${name} ${name}-enter-active`
+    this.leaveClass = name && `animate__${name} ${name} ${name}-leave-active`
 
     this.render = (createEl, {
       data,
@@ -65,8 +65,8 @@ export default class AnimatedGeneric {
         attrs,
         props: {
           name: animName,
-          enterActiveClass: this.enterClass || props.enter || animName,
-          leaveActiveClass: this.leaveClass || props.leave || animName
+          enterActiveClass: this.enterClass || props.enter || 'animate__' + animName,
+          leaveActiveClass: this.leaveClass || props.leave || 'animate__' + animName
         },
         on: {
           beforeEnter: (el) => {
